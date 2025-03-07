@@ -8,10 +8,10 @@ ADD . /opt/app
 # TODO: We should be able to do `RUN npm install --only=production`.
 # For this to work, we need to copy only package.json and things needed for `npm`'s to succeed.
 # TODO: Do we need to re-add `npm audit fix`? Or should that be part of a development process/stage?
-RUN npm install --cache /tmp/empty-cache && \
-  npm run postinstall && \
-  npm run env && \
-  rm -rf /tmp/*
+RUN npm install --cache /tmp/empty-cache
+RUN npm run postinstall
+RUN npm run env
+RUN rm -rf /tmp/*
   # TODO: These should be added in the future to correctly cache express-minify content to disk
   # Currently, doing this breaks the browser cache.
   # mkdir /tmp/public && \
