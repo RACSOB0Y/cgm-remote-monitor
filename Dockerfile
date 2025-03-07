@@ -10,6 +10,7 @@ ADD . /opt/app
 # TODO: Do we need to re-add `npm audit fix`? Or should that be part of a development process/stage?
 RUN rm -rf package-lock.json node_modules
 RUN npm cache clean --force
+RUN npm install --no-cache
 RUN npm install --cache /tmp/empty-cache
 RUN npm run postinstall
 RUN npm run env
