@@ -12,7 +12,6 @@ RUN rm -rf package-lock.json node_modules
 RUN npm cache clean --force
 RUN apk add --no-cache git
 RUN npm install --no-cache
-RUN npm audit fix
 RUN npm run postinstall
 RUN npm run env
 RUN rm -rf /tmp/*
