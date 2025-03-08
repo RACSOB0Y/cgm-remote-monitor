@@ -19,6 +19,7 @@ RUN rm -rf /tmp/*
   # Currently, doing this breaks the browser cache.
   # mkdir /tmp/public && \
   # chown node:node /tmp/public
+  
 USER node
 EXPOSE 1337
 
