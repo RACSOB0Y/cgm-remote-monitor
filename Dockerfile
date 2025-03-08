@@ -15,6 +15,7 @@ RUN npm install --no-cache
 RUN npm run postinstall
 RUN npm run env
 RUN rm -rf /tmp/*
+
   # TODO: These should be added in the future to correctly cache express-minify content to disk
   # Currently, doing this breaks the browser cache.
   # mkdir /tmp/public && \
