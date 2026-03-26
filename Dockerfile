@@ -8,6 +8,12 @@ ADD . /opt/app
 # TODO: We should be able to do `RUN npm install --only=production`.
 # For this to work, we need to copy only package.json and things needed for `npm`'s to succeed.
 # TODO: Do we need to re-add `npm audit fix`? Or should that be part of a development process/stage?
+RUN rm -rf package-lock.json node_modules
+RUN npm cache clean --force
+RUN apk add --no-cache git
+RUN npm install --no-cache
+RUN npm run postinstall
+RUN npm run env
 RUN npm ci --cache /tmp/empty-cache --omit=optional --force && \
   npm run postinstall && \
   npm run env && \
