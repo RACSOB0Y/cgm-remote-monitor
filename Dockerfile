@@ -15,6 +15,8 @@ COPY views/ ./views/
 COPY translations/ ./translations/
 COPY server.js ./
 
+RUN apk add --no-cache git
+
 # Install the full dependency tree, run the existing postinstall bundle build,
 # then prune dev-only packages before copying artifacts into the runtime image.
 RUN npm ci --cache /tmp/empty-cache --omit=optional --force && \
