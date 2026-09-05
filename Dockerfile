@@ -15,14 +15,6 @@ COPY views/ ./views/
 COPY translations/ ./translations/
 COPY server.js ./
 
-# Update packages.lock
-RUN rm -rf package-lock.json node_modules
-RUN npm cache clean --force
-RUN apk add --no-cache git
-RUN npm install --no-cache
-RUN npm run postinstall
-RUN npm run env
-
 # Install the full dependency tree, run the existing postinstall bundle build,
 # then prune dev-only packages before copying artifacts into the runtime image.
 RUN npm ci --cache /tmp/empty-cache --omit=optional --force && \
